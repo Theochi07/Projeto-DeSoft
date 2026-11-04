@@ -40,6 +40,61 @@ for nome in embarcacoes:
             frota, nome, linha, coluna, orientacao, tamanho
         )
 
-print(frota)
+frota_oponente = {
+    'porta-aviões': [
+        [[9, 1], [9, 2], [9, 3], [9, 4]]
+    ],
+    'navio-tanque': [
+        [[6, 0], [6, 1], [6, 2]],
+        [[4, 3], [5, 3], [6, 3]]
+    ],
+    'contratorpedeiro': [
+        [[1, 6], [1, 7]],
+        [[0, 5], [1, 5]],
+        [[3, 6], [3, 7]]
+    ],
+    'submarino': [
+        [[2, 7]],
+        [[0, 6]],
+        [[9, 7]],
+        [[7, 6]]
+    ]
+}
 
+tabuleiro_oponente = posiciona_frota(frota_oponente)
+tabuleiro_jogador = posiciona_frota(frota)
+
+total_navios = 0
+for tipo in frota_oponente:
+    total_navios += len(frota_oponente[tipo])
+
+posicoes_atacadas = []
+jogando = True
+
+while jogando:
+    print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
+    posicao_nova = False
+    while not posicao_nova:
+        linha_ataque = int(input('Jogador, qual linha deseja atacar? '))
+        while linha_ataque < 0 or linha_ataque > 9:
+            print('Linha inválida!')
+            linha_ataque = int(input('Jogador, qual linha deseja atacar? '))
+
+        coluna_ataque = int(input('Jogador, qual coluna deseja atacar? '))
+        while coluna_ataque < 0 or coluna_ataque > 9:
+            print('Coluna inválida!')
+            coluna_ataque = int(input('Jogador, qual coluna deseja atacar? '))
+
+        if [linha_ataque, coluna_ataque] in posicoes_atacadas:
+            print(f'A posição linha {linha_ataque} e coluna {coluna_ataque} já foi informada anteriormente!')
+        else:
+            posicoes_atacadas.append([linha_ataque, coluna_ataque])
+            posicao_nova = True
+
+    tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
+
+    if afundados(frota_oponente, tabuleiro_oponente) == total_navios:
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogando = False
     
