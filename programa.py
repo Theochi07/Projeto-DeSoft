@@ -1,9 +1,4 @@
-   embarcacoes = {
-    "porta-aviões": [1, 4],
-    "navio-tanque": [2, 3],
-    "contratorpedeiro": [3, 2],
-    "submarino": [4, 1]
-}
+   embarcacoes = {"porta-aviões": [1, 4], "navio-tanque": [2, 3], "contratorpedeiro": [3, 2],"submarino": [4, 1]}
 
 frota = {}
 
