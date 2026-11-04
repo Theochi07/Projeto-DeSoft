@@ -36,8 +36,8 @@ for nome in embarcacoes:
             if not valida:
                 print('Esta posição não está válida!')
 
-        posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-        frota = preenche_frota(frota, nome, posicoes)
+        posicoes = define_posicoes(1, 2, orientacao, tamanho)
+        frota = preenche_frota(frota, nome, linha, coluna, orientacao, tamanho)
 
 print(frota)
 
