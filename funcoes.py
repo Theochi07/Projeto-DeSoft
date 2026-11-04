@@ -44,10 +44,11 @@ def posiciona_frota (frota):
     for i in frota:
         navios = frota[i]
 
-        for posicao in navios:
-            linha = posicao[0]
-            coluna = posicao[1]
-            tabuleiro[linha][coluna] = 1
+        for navio in navios:
+            for posicao in navio:
+                linha = posicao[0]
+                coluna = posicao[1]
+                tabuleiro[linha][coluna] = 1
         
     return tabuleiro 
      
