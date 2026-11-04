@@ -1,5 +1,9 @@
-    #exercício 7 
-embarcacoes = {"porta-aviões": [1,4], 'navio-tanque': [2,3], 'contratorpedeiro': [3,2], 'submarino': [4,1]}
+   embarcacoes = {
+    "porta-aviões": [1, 4],
+    "navio-tanque": [2, 3],
+    "contratorpedeiro": [3, 2],
+    "submarino": [4, 1]
+}
 
 frota = {}
 
@@ -7,11 +11,9 @@ for nome in embarcacoes:
     quantidade = embarcacoes[nome][0]
     tamanho = embarcacoes[nome][1]
 
-    for i in range (quantidade):
-
-
+    for i in range(quantidade):
         print(f'Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}')
-        
+
         valida = False
 
         while not valida:
@@ -21,7 +23,7 @@ for nome in embarcacoes:
             orientacao = 'vertical'
             escolha = 1
 
-         if tamanho > 1:
+            if tamanho > 1:
                 escolha = int(input('[1] Vertical [2] Horizontal >'))
 
                 if escolha == 1:
@@ -41,7 +43,5 @@ for nome in embarcacoes:
         frota = preenche_frota(frota, nome, posicoes)
 
 print(frota)
-
-
 
     
