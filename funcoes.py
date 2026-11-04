@@ -53,6 +53,7 @@ def posiciona_frota (frota):
     return tabuleiro 
 
     #execicio 5
+
 def afundados(frota, tabuleiro):
     contador = 0
 
@@ -74,6 +75,7 @@ def afundados(frota, tabuleiro):
     return contador
 
     #exercicio 6 
+
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
     for numeros in posicoes:
@@ -88,4 +90,6 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
             for navio in navios:
                 if posicao in navio:
                     return False
-    return True                       
+    return True    
+                  
+
