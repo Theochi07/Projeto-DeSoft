@@ -1,4 +1,5 @@
 from funcoes import *
+import random
 
 embarcacoes = {"porta-aviões": [1, 4], "navio-tanque": [2, 3], "contratorpedeiro": [3, 2], "submarino": [4, 1]}
 
@@ -71,6 +72,12 @@ for tipo in frota_oponente:
 posicoes_atacadas = []
 jogando = True
 
+total_navios_jogador = 0
+for tipo in frota:
+    total_navios_jogador += len(frota[tipo])
+
+posicoes_oponente = []
+
 while jogando:
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
 
@@ -97,4 +104,22 @@ while jogando:
     if afundados(frota_oponente, tabuleiro_oponente) == total_navios:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando = False
+
+    else:
+        posicao_oponente_nova = False
+        while not posicao_oponente_nova:
+            linha_oponente = random.randint(0, 9)
+            coluna_oponente = random.randint(0, 9)
+            if [linha_oponente, coluna_oponente] not in posicoes_oponente:
+                posicoes_oponente.append([linha_oponente, coluna_oponente])
+                posicao_oponente_nova = True
+
+        print(f'Seu oponente está atacando na linha {linha_oponente} e coluna {coluna_oponente}')
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_oponente, coluna_oponente)
+
+        if afundados(frota, tabuleiro_jogador) == total_navios_jogador:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
+
+
     
